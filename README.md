@@ -30,7 +30,7 @@ need to share, steal or modify this script--go for it. If you are a nerd and dec
 to send me a PR, just know that I still love you; I might not be so fast to reply.
 
 _Come to think of it;_ I hear Microsoft loves the fact that thousands of copies of 
-the same repositories *are all copied all over their database*. :D 
+the same repositories *are copied all over their database*. :D 
 ## The Process 
 
 ### >> Step One - Create the Project Template 
