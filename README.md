@@ -5,14 +5,16 @@ straightforward process for quickly publishing the files into different formats.
 I came across Stefano Cecere's 
 [repository](https://github.com/StefanoCecere/markdown_pandoc_book_template) 
 and was duly impressed. I was also inspired by Adam Day's 
-[work](https://github.com/prosegrinder/pandoc-templates). I knew I didn't want 
-to lug around a bunch of custom configuration files for every project I tried to 
-convert with Pandoc. Hence, my little pet project was named the Pandoc Book Doctor. 
+[work](https://github.com/prosegrinder/pandoc-templates). 
+
+I knew I didn't want to lug around a bunch of custom configuration files for every 
+project I tried to convert with Pandoc. Hence, my little pet project was named the 
+Pandoc Book Doctor. 
 
 The Pandoc Book Doctor is a single bash script that does all the heavy lifting.
-I can publish my markup files with a single script to a PDF, ePub, or DOCX file 
-without maintaining and altering several configurations. A set of sample conversions 
-can be found in the `\examples` directory.
+I can publish my markup files to a PDF, ePub, or DOCX file without maintaining and 
+altering several configurations. A set of sample conversions can be found in the 
+`\examples` directory.
 
 Besides saving me some time and grief, this script may be helpful to
 those who aren't interested in the peculiarities of modifying modern Latex. There are
@@ -24,7 +26,11 @@ envisioned, but that's why Markdown is everywhere, and Latex isn't. This script
 has already made friends with Latex to make this process less daunting.
 
 This project is based on the principles of GNU's copyleft mantra. So, if you 
-need to share, steal or modify this script--go for it.
+need to share, steal or modify this script--go for it. If you are a nerd and decide 
+to send me a PR, just know that I still love you; I might not be so fast to reply.
+
+_Come to think of it;_ I hear Microsoft loves the fact that thousands of copies of 
+the same repositories *are all copied all over their database*. :D 
 ## The Process 
 
 ### >> Step One - Create the Project Template 
