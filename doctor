@@ -45,6 +45,10 @@ if ! [ -x "$(command -v pandoc)" ]; then
   echo 'Error: pandoc is not installed.' >&2
   exit 1
 fi
+if ! [ -x "$(command -v pandoc-latex-extensions)" ]; then
+  echo 'Error: pandoc-latex-extensions is not installed. Please see README.md.' >&2
+  exit 1
+fi
 
 # # Create Project
 # # # # # # # # # # # # # # # # # # # # # #
@@ -66,7 +70,15 @@ fi
 
 # # Convert Project
 # # # # # # # # # # # # # # # # # # # # # #
-if [ "$action" == "build" ]; then
+if [ "$action" == "convert" ]; then
+  if [ ! -f ${METADATA} ]; then
+    echo "Error: No project found at $directory."
+    exit 1
+  fi
+  if [ ! $format ]; then
+    echo "Error: No output format specified."
+    exit 1
+  fi
   echo "Converting project in $directory"
   if [ "$format" == "pdf" ]; then
     if [ ! -d $directory/publications/${format} ]; then 
@@ -96,17 +108,15 @@ fi
 
 # # Help 
 # # # # # # # # # # # # # # # # # # # # # #
-if [ "$action" == "help" ]; then
-  echo "Usage: doctor [action] [directory] [format]"
-  echo "  action: create, build, help"
-  echo " "
-  echo "To Create a New Project:"
-  echo "  doctor create <directory> <format>"
-  echo "  Available Book formats: novel_5.5x8.5, novel_6x9"
-  echo " "
-  echo "To Build an Existing Project"
-  echo "  doctor build <directory> <output>"
-  echo "  Available output: pdf, epub, html, docx"
-  echo " "
-  exit 0
-fi
+echo "Usage: doctor [action] [directory] [format]"
+echo "  action: create, build, help"
+echo " "
+echo "To Create a New Project:"
+echo "  doctor create <directory> <format>"
+echo "  Available Book formats: novel_5.5x8.5, novel_6x9"
+echo " "
+echo "To Build an Existing Project"
+echo "  doctor convert <directory> <output>"
+echo "  Available output: pdf, epub, html, docx"
+echo " "
+exit 0
