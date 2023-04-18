@@ -1,0 +1,112 @@
+#!/usr/bin/env bash
+# Home: https://github.com/bridgesense/pandoc-doctor
+# The purpose of the Pandoc Doctor is to take Common Markdown and make 
+# it beautiful using Pandoc and little to no technical prowess.
+#
+# # # # # # # # # # # # # # # # # # # # # #
+
+# # Options
+# # # # # # # # # # # # # # # # # # # # # #
+action="${1:-help}"
+directory="${2}"
+format="${3}"
+
+OUTPUT_FILENAME=book
+METADATA="${directory}/metadata.yaml"
+FRONT_MATTER="${directory}/front-matter.tex"
+CHAPTERS="${directory}/*.md"
+TOC="--toc --toc-depth 2"
+COVER_IMAGE="${directory}/images/cover.png"
+METADATA_ARGS="--metadata-file ${METADATA}"
+MATH_FORMULAS="--webtex"
+
+CONTENT="awk 'FNR==1 && NR!=1 {print \"\\n\\n\"}{print}' ${CHAPTERS}"
+CONTENT_FILTERS=tee # Use this to add sed filters or other piped commands
+
+# Debugging
+# DEBUG_ARGS="--verbose"
+DEBUG_ARGS=""
+
+# Pandoc filtes - uncomment the following variable to enable cross references filter. For more
+# information, check the "Cross references" section on the README.md file.
+# FILTER_ARGS="--filter pandoc-crossref
+FILTER_ARGS=""
+
+ARGS="${TOC} ${MATH_FORMULAS} ${METADATA_ARGS} ${FILTER_ARGS} ${DEBUG_ARGS}"
+PANDOC_COMMAND="pandoc"
+
+MANUSCRIPT_ARGS="--standalone --reference-doc templates/shunn-short.docx"
+EPUB_ARGS="--template templates/epub.html --epub-cover-image ${COVER_IMAGE}"
+PDF_ARGS="--include-in-header ${FRONT_MATTER} --template templates/pdf.latex --filter pandoc-latex-extensions --pdf-engine xelatex"
+
+# # Check for Pandoc 
+# # # # # # # # # # # # # # # # # # # # # #
+if ! [ -x "$(command -v pandoc)" ]; then
+  echo 'Error: pandoc is not installed.' >&2
+  exit 1
+fi
+
+# # Create Project
+# # # # # # # # # # # # # # # # # # # # # #
+if [ "$action" == "create" ]; then
+  echo "Creating project in $directory"
+  # check if dir exists 
+  if [ ! -d $directory ]; then 
+    mkdir -p $directory
+  fi 
+  if [ !  -f ${METADATA} ]; then  
+    cp -r templates/novel/* $directory
+    mkdir -p $directory/images
+  else
+    echo "Error: A novel project already exists at $directory."
+    exit 1
+  fi
+  exit 0
+fi
+
+# # Convert Project
+# # # # # # # # # # # # # # # # # # # # # #
+if [ "$action" == "build" ]; then
+  echo "Converting project in $directory"
+  if [ "$format" == "pdf" ]; then
+    if [ ! -d $directory/publications/${format} ]; then 
+      mkdir -p $directory/publications/${format}
+    fi
+    echo "Building the ${format} file"
+    ${PANDOC_COMMAND} ${CHAPTERS} ${ARGS} --metadata subtitle='' --metadata author='' ${PDF_ARGS} -o ${directory}/publications/${format}/${OUTPUT_FILENAME}.${format}
+  elif [ "$format" == "epub" ]; then
+    if [ ! -d $directory/publications/${format} ]; then 
+      mkdir -p $directory/publications/${format}
+    fi
+    echo "Building the ${format} file"
+    ${PANDOC_COMMAND} ${CHAPTERS} ${ARGS} --metadata css='templates/style.css' ${EPUB_ARGS} -o ${directory}/publications/${format}/${OUTPUT_FILENAME}.${format}
+  elif [ "$format" == "manuscript" ]; then
+      if [ ! -d $directory/publications/${format} ]; then 
+        mkdir -p $directory/publications/${format}
+      fi
+      echo "Building the ${format} file"
+      ${PANDOC_COMMAND} ${CHAPTERS} ${ARGS} ${MANUSCRIPT_ARGS} -o ${directory}/publications/${format}/${OUTPUT_FILENAME}.docx
+  else
+    echo "Error: The only output formats available are pdf, epub, and manuscript." 
+    exit 1
+  fi
+  exit 0
+fi 
+
+
+# # Help 
+# # # # # # # # # # # # # # # # # # # # # #
+if [ "$action" == "help" ]; then
+  echo "Usage: doctor [action] [directory] [format]"
+  echo "  action: create, build, help"
+  echo " "
+  echo "To Create a New Project:"
+  echo "  doctor create <directory> <format>"
+  echo "  Available Book formats: novel_5.5x8.5, novel_6x9"
+  echo " "
+  echo "To Build an Existing Project"
+  echo "  doctor build <directory> <output>"
+  echo "  Available output: pdf, epub, html, docx"
+  echo " "
+  exit 0
+fi

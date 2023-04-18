@@ -1,0 +1,64 @@
+---
+# METADATA
+# Pandoc Varialbes: hhttps://pandoc.org/MANUAL.html#variables
+lang: en-US # like en, en-UK, en-US, fr, it, it-IT, ...
+title: "Secreta Alchimiae"
+subtitle: "Lapis Philosophorum" 
+author: "Magnalia D. Thomae"
+identifier: "0123456789"
+publisher: "For that special person"
+# for epub output only; for pdf, see the front-matter.tex
+rights: |
+  © 1579 by Publisher Unlimited 
+  
+  All rights reserved.
+
+  For information about permission to reproduce selections from this book, write to permissions@publisher.com.
+  
+  publisher.com
+
+  ISBN 123456789
+  
+  Printed in the United States of America
+
+  DOC 10 9 8 7 6 5 4 3 2 1
+
+  This is a work of fiction. Any resemblance to any person living or dead, any palce, events or occurrences, is purely coincidental.
+
+  &nbsp;
+
+  AD LECTOREM
+
+  QUÆ Æte torquebant aliorum anigmata Lector
+
+  &nbsp;&nbsp;&nbsp;Explicat ifta modo pagina rara tibi :
+
+  Poffit ut abftrufo quicquid natura Lapillo
+
+  &nbsp;&nbsp;&nbsp;Condidit , ingenuis arte patêre viris :
+
+  Poffit & Argentum fubitò , vel Cinclus in Aurum
+
+  &nbsp;&nbsp;&nbsp;Vertere , qui prafens calleat artis opus .
+
+  Ergo agè natura loca inacceßa hacce potentis
+
+  &nbsp;&nbsp;&nbsp;Arte petas , Liber hic dum tibi monſtrat iter .
+
+subject: "Disscussions on the properties and characteristics of various plants and minerals used in medicinepharmaceuticals, medicine, botanicals, natural remedies, and remedies"
+description: "It is a treatise on alchemical philosophy and the transmutation of metals, with practical instructions and formulae for creating various substances. The book describes the properties of different substances, the preparation of materials, and the transmutation of metals into gold and silver. It also discusses the spiritual and philosophical aspects of alchemy, including the quest for eternal life and the purification of the soul."
+keywords: "Medicine, Philosophy, OpenSource"
+toc: true
+toc-depth: 2
+top-level-division: chapter # default | section | chapter | part
+epub-chapter-level: 1
+include-front-matter: true
+mainfont: "Libre Baskerville"
+monofont: "Fira Mono"
+sansfont: "Montserrat"
+documentclass: book
+geometry: [paperwidth=5.5in, paperheight=8.5in, inner=0.76in, outer=0.6in, top=0.76in, bottom=0.76in]
+
+# log
+verbosity: WARNING # ERROR, WARNING, or INFO 
+---

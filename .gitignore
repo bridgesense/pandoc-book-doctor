@@ -1,0 +1,16 @@
+# Ignore everything in the directory
+*
+
+# Except for these files and directories
+!.gitignore
+!doctor
+!LICENSE.md
+!markdown_guide.md
+!README.md
+!examples/
+!fonts/
+!templates/
+
+examples/**
+fonts/**
+templates/**
