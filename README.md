@@ -20,7 +20,7 @@ Besides saving me some time and grief, this script may be helpful to
 those who aren't interested in the peculiarities of modifying modern Latex
 just to publish their content on different platforms. If that's you, enjoy!
 
-As this project is based on the principles of GNU's copyleft mantra. So, if
+This project is based on the principles of GNU's copyleft mantra. So, if
 you would like to share additional template ideas or would like to offer
 some general improvements, please feel free to create a PR. 
 
@@ -33,12 +33,11 @@ Create a working template of a novel with the following:
 ```
 bash doctor create <directory>
 ```
-This will create a  5.5in x 8.5in novel template. The size can be adjusted later.
+This will create a 5.5 x 8.5 novel template. The size can be adjusted later.
 
 ### >> Step Two - Edit Configuration Files
 ---
-Take a look at the first configuration file in the project starting with metadata.yaml.
-All the notes and references you need for setting up your project are noted in that file.
+First check out the newly created configuration file, `metadata.yaml`.
 
 Here's the file structure:
 ```
@@ -50,7 +49,7 @@ your-book/       # Your new book directory
 |- images/       # Images folder
 |  |- cover.png  # Cover page for epub
 ```
-You'll also want to review these files and add additional ones as needed. Please,
+You'll also want to review, change and add additional files as needed. Please,
 keep in mind that the starting numbers of each new file are important, as this will dictate
 the order in which the documents are compiled by Pandoc.
 
