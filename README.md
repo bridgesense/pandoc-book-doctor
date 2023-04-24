@@ -100,8 +100,30 @@ After each writing session, commit the changes using a tool like [Lazygit](https
 with some very nice features for reviewing all the save points in a project's history.
 
 Also, check out [LazyVim](https://www.lazyvim.org/). If Lazygit is installed, LazyVim will automatically integrate 
-the tool into your workflow. Just hit <space>gg to get started. A nice tutorial is available 
+the tool into your workflow. Just hit <space>gg to get started. A tutorial is available 
 [here](https://youtu.be/CPLdltN7wgE).
+
+Finally, you can easily add [Grammarly](https://www.grammarly.com/) to your LazyVim configuration, turning it into a 
+powerful content editor. I use the [Mason Tool Installer](https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim) to 
+set up Grammarly in LazyVim.
+
+<details>
+<summary>LazyVim Plugin Lua</summary>
+
+```
+return {
+  "WhoIsSethDaniel/mason-tool-installer.nvim",
+
+  opts = {
+    { "grammarly-languageserver", auto_update = true },
+    auto_update = true,
+    run_on_start = true,
+    start_delay = 3000,
+    debounce_hours = 5,
+  },
+}
+```
+</details>
 
 ## Requirements
 ---
