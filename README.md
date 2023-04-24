@@ -44,7 +44,9 @@ This command will create a 5.5 x 8.5 novel template. The size can easily be adju
 later.
 
 ### >> Step Two - Edit Configuration Files
-First, check out where everything is in the newly created files, specifically: `metadata.yaml` and `front-matter.tex`. Then, note how the information in these files is referenced during each conversion.
+First, check out where everything is in the newly created files, specifically: 
+`metadata.yaml` and `front-matter.tex`. Then, note how the information in these 
+files is referenced during each conversion.
 
 The `front-matter.tex` is only used when producing a pdf file. When producing ePub documents, *all
 latex* will be ignored. That is why some of the text from `front-matter.tex` is also present
@@ -68,7 +70,9 @@ your-book/       # the new book directory
 |- images/       # Images folder
 |  |- cover.png  # Cover page for epub
 ```
-You'll also want to review, change and add additional files as needed. Please remember that the starting numbers of each new file are essential, as this will dictate the order in which Pandoc compiles the documents.
+You'll also want to review, change and add additional files as needed. Please remember 
+that the starting numbers of each new file are essential, as this will dictate the order 
+in which Pandoc compiles the documents.
 
 There will be a directory called `images` created in your project file. Any images you wish
 to include with your project should be copied here. The standard markdown reference to images
@@ -82,12 +86,23 @@ can be found in the [Markdown syntax guide](https://www.markdownguide.org/basic-
 
 ### >> Step Three - Compile Your Project
 ---
-Lastly, you'll want to compile your project into a new format. Currently, there are three available formats:  ePub, Manuscript(DOCX), and PDF. The output is always generated inside the `publication` 
+Lastly, you'll want to compile your project into a new format. Currently, there are three available 
+formats:  ePub, Manuscript(DOCX), and PDF. The output is always generated inside the `publication` 
 directory.
 
 ```
 bash doctor convert <directory> <epub, manuscript or pdf>
 ```
+## Working with Your Project 
+A repository is an excellent tool for saving changes while writing and editing a novel. 
+
+After each writing session, commit the changes using a tool like [Lazygit](https://github.com/jesseduffield/lazygit). Lazygit comes
+with some very nice features for reviewing all the save points in a project's history.
+
+Also, check out [LazyVim](https://www.lazyvim.org/). If Lazygit is installed, LazyVim will automatically integrate 
+the tool into your workflow. Just hit <space>gg to get started. A nice tutorial is available 
+[here](https://youtu.be/CPLdltN7wgE).
+
 ## Requirements
 ---
 - Install the latest version of Pandoc: [Installing Pandoc](https://pandoc.org/installing.html).

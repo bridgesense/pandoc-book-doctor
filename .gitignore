@@ -1,16 +1,34 @@
-# Ignore everything in the directory
-*
+# macOS system file
+.DS_Store
 
-# Except for these files and directories
-!.gitignore
-!doctor
-!LICENSE.md
-!markdown_guide.md
-!README.md
-!examples/
-!fonts/
-!templates/
+# Node.js dependencies
+node_modules/
 
-examples/**
-fonts/**
-templates/**
+# Sensitive information
+.env
+
+# Log files
+*.log
+
+# Code coverage reports
+coverage/
+
+# JetBrains IDE files
+.idea/
+*.iml
+
+# VS Code configuration
+.vscode/
+
+# Cached data
+.cache/
+
+# Dependency lock files
+yarn.lock
+package-lock.json
+
+# Vim/Neovim
+*.swp
+*~
+*.bak
+*.un~
